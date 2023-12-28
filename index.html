@@ -30,9 +30,13 @@
 
             //oluşturduğumuz sahnemize nesne ekleme
 			const geometry = new THREE.BoxGeometry();
-			const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+			const geometry2 = new THREE.TorusGeometry(5, 1 , 8, 30);
+			const color1 = new THREE.Color("#00FFFF");
+			const material = new THREE.MeshBasicMaterial( { color: color1, wireframe: true } );
+			const material2 = new THREE.MeshBasicMaterial( { color: 0x00ff00, wireframe: true } );
 			const cube = new THREE.Mesh( geometry, material );
-			scene.add( cube );
+			const other = new THREE.Mesh( geometry2, material2 );
+			scene.add( cube, other );
 
 			camera.position.z = 5;
 
@@ -41,6 +45,8 @@
 
 				cube.rotation.x += 0.01;
 				cube.rotation.y += 0.01;
+				other.rotation.x += 0.01;
+				other.rotation.y += 0.01;
 
 				renderer.render( scene, camera );
 			};
