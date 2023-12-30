@@ -1,57 +1,23 @@
+<!--
+  EYE FREE MODEL 3D BY Oscar creativo by OSCAR CREATIVO is licensed under Creative Commons Attribution.
+  Juvenile Teratophoneus curriei byrankinstudio is licensed under Creative Commons Attribution.
+-->
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>My first three.js app</title>
-		<style>
-			body { margin: 0; }
-		</style>
-	</head>
-	<body>
-        <script src="js/three.js"></script>
-        <script src="js/cdnThreee.js"></script>
-        <script src="js/MTLLoader.js"></script>
-        <script src="js/OBJLoader.js"></script>
-        <script src="js/orbitControls.js"></script>
+  <head>
+    <meta charset="utf-8" />
+    <title>A simple Three.JS App</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>A simple three.js app</h1>
+    </header>
 
+    <main>
+      <div id="container3D"></div>
+    </main>
 
-
-        <script>
-			const scene = new THREE.Scene();
-			const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-            //ilk parametre kameranın görüş alanı(açı cinsinden),ikincisi kameranın en boy oranı,üç ve dördüncü paremetre ise yakınlık-uzaklık değerlerinin(yani nesne yakınlık değerinden yakına, uzaklık değerinden uzağa gidemez) ayarlanmasını sağlar.
-
-
-            //renderer ile yapılan ayarlara göre bir uygulama oluşturulur, setsize ile uygulama boyutu belirlenir.
-			const renderer = new THREE.WebGLRenderer();
-			renderer.setSize( window.innerWidth, window.innerHeight );
-			document.body.appendChild( renderer.domElement );
-
-
-            //oluşturduğumuz sahnemize nesne ekleme
-			const geometry = new THREE.BoxGeometry();
-			const geometry2 = new THREE.TorusGeometry(5, 1 , 8, 30);
-			const color1 = new THREE.Color("#00FFFF");
-			const material = new THREE.MeshBasicMaterial( { color: color1, wireframe: true } );
-			const material2 = new THREE.MeshBasicMaterial( { color: 0x00ff00, wireframe: true } );
-			const cube = new THREE.Mesh( geometry, material );
-			const other = new THREE.Mesh( geometry2, material2 );
-			scene.add( cube, other );
-
-			camera.position.z = 5;
-
-			function animate() {
-				requestAnimationFrame( animate );
-
-				cube.rotation.x += 0.01;
-				cube.rotation.y += 0.01;
-				other.rotation.x += 0.01;
-				other.rotation.y += 0.01;
-
-				renderer.render( scene, camera );
-			};
-
-			animate();
-		</script>
-	</body>
+	<script type="module" src="js/main.js"></script>
+</body>
 </html>
